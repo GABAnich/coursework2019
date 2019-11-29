@@ -7,7 +7,7 @@
 # Usage:
 ```bash
 git clone https://github.com/GABAnich/coursework2019
-cd coursework2019
+cd coursework2019/abstract-factory
 g++ *.cpp *.h -o main
 ./main
 ```
