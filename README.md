@@ -3,6 +3,7 @@
 ## Furniture shop with abstract factory
 
 ![class-diagram](https://i.ibb.co/b39jGNx/class-diagram.png)
+![detailed-class-diagram](https://i.ibb.co/wrhVNYr/detailed-class-diagram.png)
 
 # Usage:
 ```bash
