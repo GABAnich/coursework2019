@@ -16,11 +16,37 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    ModernChair.cpp \
+    ModernCoffeeTable.cpp \
+    ModernFurnitureFactory.cpp \
+    ModernSofa.cpp \
+    VictorianChair.cpp \
+    VictorianCoffeeTable.cpp \
+    VictorianFurnitureFactory.cpp \
+    VictorianSofa.cpp \
     main.cpp \
     mainwindow.cpp
+    ModernChair.cpp
+    ModernCoffeeTable.cpp
+    ModernFurnitureFactory.cpp
+    ModernSofa.cpp
+    VictorianChair.cpp
+    VictorianCoffeeTable.cpp
+    VictorianFurnitureFactory.cpp
+    VictorianSofa.cpp
 
 HEADERS += \
+    Chair.h \
+    CoffeeTable.h \
+    FurnitureFactory.h \
+    Item.h \
+    Sofa.h \
     mainwindow.h
+    Sofa.h
+    Chair.h
+    CoffeeTable.h
+    Item.h
+    FurnitureFactory.h
 
 FORMS += \
     mainwindow.ui
