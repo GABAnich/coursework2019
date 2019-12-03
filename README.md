@@ -10,11 +10,5 @@
 ```bash
 git clone https://github.com/GABAnich/coursework2019
 cd coursework2019/abstract-factory
-g++ *.cpp *.h -o main
 ./main
 ```
-
-width: 960px
-height: 600px
-
-colors: #e91e63 #303030
