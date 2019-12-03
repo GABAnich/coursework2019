@@ -10,7 +10,7 @@ public:
   {
     name = "Modern Chair";
     description = "Modern Chair, 2019";
-    imageURL = "./images/mc.jpg";
+    imageURL = "/home/gaba/Desktop/coursework2019/images/mc.png";
   }
 
   string getTypeOfChair()

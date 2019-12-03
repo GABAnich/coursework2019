@@ -229,6 +229,7 @@ DIST          = ../../../../Qt/5.12.2/gcc_64/mkspecs/features/spec_pre.prf \
 		../../../../Qt/5.12.2/gcc_64/mkspecs/features/qt_config.prf \
 		../../../../Qt/5.12.2/gcc_64/mkspecs/linux-g++/qmake.conf \
 		../../../../Qt/5.12.2/gcc_64/mkspecs/features/spec_post.prf \
+		../abstract-factory/.qmake.stash \
 		../../../../Qt/5.12.2/gcc_64/mkspecs/features/exclusive_builds.prf \
 		../../../../Qt/5.12.2/gcc_64/mkspecs/features/toolchain.prf \
 		../../../../Qt/5.12.2/gcc_64/mkspecs/features/default_pre.prf \
@@ -248,7 +249,12 @@ DIST          = ../../../../Qt/5.12.2/gcc_64/mkspecs/features/spec_pre.prf \
 		../../../../Qt/5.12.2/gcc_64/mkspecs/features/exceptions.prf \
 		../../../../Qt/5.12.2/gcc_64/mkspecs/features/yacc.prf \
 		../../../../Qt/5.12.2/gcc_64/mkspecs/features/lex.prf \
-		../abstract-factory/abstract-factory.pro ../abstract-factory/mainwindow.h ../abstract-factory/main.cpp \
+		../abstract-factory/abstract-factory.pro ../abstract-factory/Chair.h \
+		../abstract-factory/CoffeeTable.h \
+		../abstract-factory/FurnitureFactory.h \
+		../abstract-factory/Item.h \
+		../abstract-factory/Sofa.h \
+		../abstract-factory/mainwindow.h ../abstract-factory/main.cpp \
 		../abstract-factory/mainwindow.cpp
 QMAKE_TARGET  = abstract-factory
 DESTDIR       = 
@@ -433,6 +439,7 @@ Makefile: ../abstract-factory/abstract-factory.pro ../../../../Qt/5.12.2/gcc_64/
 		../../../../Qt/5.12.2/gcc_64/mkspecs/features/qt_config.prf \
 		../../../../Qt/5.12.2/gcc_64/mkspecs/linux-g++/qmake.conf \
 		../../../../Qt/5.12.2/gcc_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		../../../../Qt/5.12.2/gcc_64/mkspecs/features/exclusive_builds.prf \
 		../../../../Qt/5.12.2/gcc_64/mkspecs/features/toolchain.prf \
 		../../../../Qt/5.12.2/gcc_64/mkspecs/features/default_pre.prf \
@@ -629,6 +636,7 @@ Makefile: ../abstract-factory/abstract-factory.pro ../../../../Qt/5.12.2/gcc_64/
 ../../../../Qt/5.12.2/gcc_64/mkspecs/features/qt_config.prf:
 ../../../../Qt/5.12.2/gcc_64/mkspecs/linux-g++/qmake.conf:
 ../../../../Qt/5.12.2/gcc_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 ../../../../Qt/5.12.2/gcc_64/mkspecs/features/exclusive_builds.prf:
 ../../../../Qt/5.12.2/gcc_64/mkspecs/features/toolchain.prf:
 ../../../../Qt/5.12.2/gcc_64/mkspecs/features/default_pre.prf:
@@ -667,7 +675,7 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../../Qt/5.12.2/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../abstract-factory/mainwindow.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../abstract-factory/Chair.h ../abstract-factory/CoffeeTable.h ../abstract-factory/FurnitureFactory.h ../abstract-factory/Item.h ../abstract-factory/Sofa.h ../abstract-factory/mainwindow.h $(DISTDIR)/
 	$(COPY_FILE) --parents ../abstract-factory/main.cpp ../abstract-factory/mainwindow.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../abstract-factory/mainwindow.ui $(DISTDIR)/
 
@@ -705,6 +713,11 @@ compiler_moc_header_make_all: moc_mainwindow.cpp
 compiler_moc_header_clean:
 	-$(DEL_FILE) moc_mainwindow.cpp
 moc_mainwindow.cpp: ../abstract-factory/mainwindow.h \
+		../abstract-factory/FurnitureFactory.h \
+		../abstract-factory/Chair.h \
+		../abstract-factory/Item.h \
+		../abstract-factory/CoffeeTable.h \
+		../abstract-factory/Sofa.h \
 		../../../../Qt/5.12.2/gcc_64/include/QtWidgets/QMainWindow \
 		../../../../Qt/5.12.2/gcc_64/include/QtWidgets/qmainwindow.h \
 		../../../../Qt/5.12.2/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
@@ -837,6 +850,11 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_ui
 ####### Compile
 
 main.o: ../abstract-factory/main.cpp ../abstract-factory/mainwindow.h \
+		../abstract-factory/FurnitureFactory.h \
+		../abstract-factory/Chair.h \
+		../abstract-factory/Item.h \
+		../abstract-factory/CoffeeTable.h \
+		../abstract-factory/Sofa.h \
 		../../../../Qt/5.12.2/gcc_64/include/QtWidgets/QMainWindow \
 		../../../../Qt/5.12.2/gcc_64/include/QtWidgets/qmainwindow.h \
 		../../../../Qt/5.12.2/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
@@ -952,7 +970,20 @@ main.o: ../abstract-factory/main.cpp ../abstract-factory/mainwindow.h \
 		../../../../Qt/5.12.2/gcc_64/include/QtGui/qinputmethod.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../abstract-factory/main.cpp
 
-mainwindow.o: ../abstract-factory/mainwindow.cpp ../abstract-factory/mainwindow.h \
+mainwindow.o: ../abstract-factory/mainwindow.cpp ../abstract-factory/ModernFurnitureFactory.cpp \
+		../abstract-factory/FurnitureFactory.h \
+		../abstract-factory/Chair.h \
+		../abstract-factory/Item.h \
+		../abstract-factory/CoffeeTable.h \
+		../abstract-factory/Sofa.h \
+		../abstract-factory/ModernChair.cpp \
+		../abstract-factory/ModernCoffeeTable.cpp \
+		../abstract-factory/ModernSofa.cpp \
+		../abstract-factory/VictorianFurnitureFactory.cpp \
+		../abstract-factory/VictorianChair.cpp \
+		../abstract-factory/VictorianCoffeeTable.cpp \
+		../abstract-factory/VictorianSofa.cpp \
+		../abstract-factory/mainwindow.h \
 		../../../../Qt/5.12.2/gcc_64/include/QtWidgets/QMainWindow \
 		../../../../Qt/5.12.2/gcc_64/include/QtWidgets/qmainwindow.h \
 		../../../../Qt/5.12.2/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
@@ -1059,7 +1090,45 @@ mainwindow.o: ../abstract-factory/mainwindow.cpp ../abstract-factory/mainwindow.
 		../../../../Qt/5.12.2/gcc_64/include/QtGui/qtouchdevice.h \
 		../../../../Qt/5.12.2/gcc_64/include/QtWidgets/qtabwidget.h \
 		../../../../Qt/5.12.2/gcc_64/include/QtGui/qicon.h \
-		ui_mainwindow.h
+		ui_mainwindow.h \
+		../../../../Qt/5.12.2/gcc_64/include/QtCore/QVariant \
+		../../../../Qt/5.12.2/gcc_64/include/QtWidgets/QApplication \
+		../../../../Qt/5.12.2/gcc_64/include/QtWidgets/qapplication.h \
+		../../../../Qt/5.12.2/gcc_64/include/QtCore/qcoreapplication.h \
+		../../../../Qt/5.12.2/gcc_64/include/QtCore/qeventloop.h \
+		../../../../Qt/5.12.2/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		../../../../Qt/5.12.2/gcc_64/include/QtGui/qguiapplication.h \
+		../../../../Qt/5.12.2/gcc_64/include/QtGui/qinputmethod.h \
+		../../../../Qt/5.12.2/gcc_64/include/QtWidgets/QComboBox \
+		../../../../Qt/5.12.2/gcc_64/include/QtWidgets/qcombobox.h \
+		../../../../Qt/5.12.2/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		../../../../Qt/5.12.2/gcc_64/include/QtWidgets/qstyleoption.h \
+		../../../../Qt/5.12.2/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		../../../../Qt/5.12.2/gcc_64/include/QtGui/qvalidator.h \
+		../../../../Qt/5.12.2/gcc_64/include/QtCore/qregularexpression.h \
+		../../../../Qt/5.12.2/gcc_64/include/QtWidgets/qslider.h \
+		../../../../Qt/5.12.2/gcc_64/include/QtWidgets/qabstractslider.h \
+		../../../../Qt/5.12.2/gcc_64/include/QtWidgets/qstyle.h \
+		../../../../Qt/5.12.2/gcc_64/include/QtWidgets/qtabbar.h \
+		../../../../Qt/5.12.2/gcc_64/include/QtWidgets/qrubberband.h \
+		../../../../Qt/5.12.2/gcc_64/include/QtWidgets/qframe.h \
+		../../../../Qt/5.12.2/gcc_64/include/QtCore/qabstractitemmodel.h \
+		../../../../Qt/5.12.2/gcc_64/include/QtWidgets/QHeaderView \
+		../../../../Qt/5.12.2/gcc_64/include/QtWidgets/qheaderview.h \
+		../../../../Qt/5.12.2/gcc_64/include/QtWidgets/qabstractitemview.h \
+		../../../../Qt/5.12.2/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../../../Qt/5.12.2/gcc_64/include/QtCore/qitemselectionmodel.h \
+		../../../../Qt/5.12.2/gcc_64/include/QtWidgets/QLabel \
+		../../../../Qt/5.12.2/gcc_64/include/QtWidgets/qlabel.h \
+		../../../../Qt/5.12.2/gcc_64/include/QtWidgets/QPushButton \
+		../../../../Qt/5.12.2/gcc_64/include/QtWidgets/qpushbutton.h \
+		../../../../Qt/5.12.2/gcc_64/include/QtWidgets/qabstractbutton.h \
+		../../../../Qt/5.12.2/gcc_64/include/QtWidgets/QTableView \
+		../../../../Qt/5.12.2/gcc_64/include/QtWidgets/qtableview.h \
+		../../../../Qt/5.12.2/gcc_64/include/QtWidgets/QWidget \
+		../../../../Qt/5.12.2/gcc_64/include/QtGui/QPixmap \
+		../../../../Qt/5.12.2/gcc_64/include/QtGui/QStandardItemModel \
+		../../../../Qt/5.12.2/gcc_64/include/QtGui/qstandarditemmodel.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../abstract-factory/mainwindow.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 

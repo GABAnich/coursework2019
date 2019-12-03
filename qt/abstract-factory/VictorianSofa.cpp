@@ -10,7 +10,7 @@ public:
   {
     name = "Victorian Sofa";
     description = "Victorian Sofa, 1890";
-    imageURL = "./images/vs.jpg";
+    imageURL = "/home/gaba/Desktop/coursework2019/images/vs.png";
   }
 
   string getTypeOfSofa()

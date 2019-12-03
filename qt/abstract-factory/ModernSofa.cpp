@@ -10,7 +10,7 @@ public:
   {
     name = "Modern Sofa";
     description = "Modern Sofa, 2019";
-    imageURL = "./images/ms.jpg";
+    imageURL = "/home/gaba/Desktop/coursework2019/images/ms.png";
   }
 
   string getTypeOfSofa()

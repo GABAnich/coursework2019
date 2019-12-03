@@ -10,7 +10,7 @@ public:
   {
     name = "Victorian Coffee Table";
     description = "Victorian Coffee Table, 1890";
-    imageURL = "./images/vct.jpg";
+    imageURL = "/home/gaba/Desktop/coursework2019/images/vct.png";
   }
 
   string getTypeOfCoffeeTable()

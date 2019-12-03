@@ -1,6 +1,9 @@
+#include "ModernFurnitureFactory.cpp"
+#include "VictorianFurnitureFactory.cpp"
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+#include <QPixmap>
 #include <QPixmap>
 #include <QStandardItemModel>
 
@@ -13,39 +16,22 @@ MainWindow::MainWindow(QWidget *parent)
     ui->tableView->verticalHeader()->setDefaultSectionSize(170);
     ui->tableView->horizontalHeader()->setDefaultSectionSize(200);
 
-    QImage mc("/home/gaba/Desktop/coursework2019/images/mc.png");
-    QImage ms("/home/gaba/Desktop/coursework2019/images/ms.png");
-    QImage mct("/home/gaba/Desktop/coursework2019/images/mct.png");
-    QImage vc("/home/gaba/Desktop/coursework2019/images/vc.png");
-    QImage vs("/home/gaba/Desktop/coursework2019/images/vs.png");
-    QImage vct("/home/gaba/Desktop/coursework2019/images/vct.png");
+    this->factory = new ModernFurnitureFactory();
+}
 
+void MainWindow::setTable()
+{
+    int i = 0;
     QStandardItemModel *model = new QStandardItemModel();
-
-    QStandardItem *item00 = new QStandardItem();
-    item00->setData(QVariant(QPixmap::fromImage(mc)), Qt::DecorationRole);
-    model->setItem(0, 0, item00);
-
-    QStandardItem *item01 = new QStandardItem();
-    item01->setData(QVariant(QPixmap::fromImage(ms)), Qt::DecorationRole);
-    model->setItem(0, 1, item01);
-
-    QStandardItem *item02 = new QStandardItem();
-    item02->setData(QVariant(QPixmap::fromImage(vs)), Qt::DecorationRole);
-    model->setItem(0, 2, item02);
-
-    QStandardItem *item10 = new QStandardItem();
-    item10->setData(QVariant(QPixmap::fromImage(vc)), Qt::DecorationRole);
-    model->setItem(1, 0, item10);
-
-    QStandardItem *item11 = new QStandardItem();
-    item11->setData(QVariant(QPixmap::fromImage(mct)), Qt::DecorationRole);
-    model->setItem(1, 1, item11);
-
-    QStandardItem *item12 = new QStandardItem();
-    item12->setData(QVariant(QPixmap::fromImage(vct)), Qt::DecorationRole);
-    model->setItem(1, 2, item12);
-
+    for (auto el = this->items.begin(); el != this->items.end(); ++el)
+    {
+        QString imageURL = QString::fromStdString(el->getImageURL());
+        QImage image(imageURL);
+        QStandardItem *item = new QStandardItem();
+        item->setData(QVariant(QPixmap::fromImage(image)), Qt::DecorationRole);
+        model->setItem(i / 3, i % 3, item);
+        i++;
+    }
     ui->tableView->setModel(model);
 }
 
@@ -54,3 +40,32 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::on_pushButton_clicked()
+{
+    Chair *chair = this->factory->createChair();
+    this->items.push_back(*chair);
+    setTable();
+}
+
+void MainWindow::on_pushButton_2_clicked()
+{
+    Sofa *sofa = this->factory->createSofa();
+    this->items.push_back(*sofa);
+    setTable();
+}
+
+void MainWindow::on_pushButton_3_clicked()
+{
+    CoffeeTable *coffeeTable = this->factory->createCoffeeTable();
+    this->items.push_back(*coffeeTable);
+    setTable();
+}
+
+void MainWindow::on_comboBox_currentIndexChanged(int index)
+{
+    if (index == 0) {
+        this->factory = new ModernFurnitureFactory();
+    } else if (index == 1) {
+        this->factory = new VictorianFurnitureFactory();
+    }
+}
