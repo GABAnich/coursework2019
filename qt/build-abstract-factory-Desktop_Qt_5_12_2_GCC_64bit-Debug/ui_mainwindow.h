@@ -41,7 +41,7 @@ public:
         MainWindow->resize(960, 600);
         MainWindow->setAutoFillBackground(true);
         MainWindow->setStyleSheet(QString::fromUtf8("MainWindow {\n"
-"	background-color: #228c22;\n"
+"	background-color: #c2c5cc;\n"
 "}"));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));

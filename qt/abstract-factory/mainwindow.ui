@@ -18,7 +18,7 @@
   </property>
   <property name="styleSheet">
    <string notr="true">MainWindow {
-	background-color: #228c22;
+	background-color: #c2c5cc;
 }</string>
   </property>
   <widget class="QWidget" name="centralwidget">
